@@ -1,0 +1,6 @@
+name = "Ecwid Shopping Cart"
+description = "Ecwid is a powerful and easy-to-use shopping cart solution that seamlessly integrates with your Drupal website. Join over 550,000 sellers in 175 countries and sell globally with over 40 international payment options, real-time shipping integrations and support of 45 languages. Learn more about Ecwid at <a target='_blank' href='http://www.ecwid.com/?source=drupal7'>www.ecwid.com</a> ."
+backdrop = 1.x
+type = module
+package = "E-Commerce"
+

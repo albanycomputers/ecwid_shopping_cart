@@ -1,0 +1,26 @@
+<?php
+// $Id: ecwid_shopping_cart.install,v 1.3 2010/04/21 16:04:12 ecwid Exp $
+
+
+/**
+ * @file
+ * Install, update and uninstall functions for the ecwid_shopping_cart module.
+ *
+ */
+
+/**
+ * @todo Please document this function.
+ * @see http://drupal.org/node/1354
+ */
+function ecwid_shopping_cart_uninstall() {
+  config_clear('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_minicart_layout');
+  config_clear('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_storeid');
+  config_clear('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_categories_per_row');
+  config_clear('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_products_per_column_in_grid');
+  config_clear('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_products_per_row_in_grid');
+  config_clear('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_products_per_page_in_list');
+  config_clear('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_products_per_page_in_table');
+  config_clear('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_view_mode_on_product');
+  config_clear('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_view_mode_on_search');
+  config_clear('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_default_category_id');
+}

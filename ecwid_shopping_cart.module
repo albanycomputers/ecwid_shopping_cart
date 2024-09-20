@@ -4,7 +4,7 @@
  * Implements hook_config_info().
  */
 function ecwid_shopping_cart_config_info(){
-  $prefixes['ecwid_shopping_cart.ecwid_shopping_cart.settings'] = array(
+  $prefixes['ecwid_shopping_cart.settings'] = array(
     'label' => t('First set of settings'),
     'group' => t('Configuration'),
   );
@@ -17,7 +17,7 @@ require_once 'lib/ecwid_platform.php';
 require_once 'lib/ecwid_misc.php';
 
 function _ecwid_shopping_cart_get_storeid() {
-  $store_id = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_storeid');
+  $store_id = config_get('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_storeid');
   if (empty($store_id)) {
     $store_id = '1003';
   }
@@ -28,7 +28,7 @@ function _ecwid_shopping_cart_get_storeid() {
 }
 
 function _ecwid_shopping_cart_show_seo_catalog() {
-  $show_seo_catalog = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_show_seo_catalog');
+  $show_seo_catalog = config_get('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_show_seo_catalog');
 
   if (empty($show_seo_catalog)) {
     $show_seo_catalog = FALSE;
@@ -38,7 +38,7 @@ function _ecwid_shopping_cart_show_seo_catalog() {
 }
 
 function _ecwid_shopping_cart_categories_per_row() {
-  $categories_per_row = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_categories_per_row');
+  $categories_per_row = config_get('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_categories_per_row');
   if (empty($categories_per_row)) {
     $categories_per_row = 3;
   }
@@ -49,7 +49,7 @@ function _ecwid_shopping_cart_categories_per_row() {
 }
 
 function _ecwid_shopping_cart_products_per_column_in_grid() {
-  $products_per_column = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_products_per_column_in_grid');
+  $products_per_column = config_get('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_products_per_column_in_grid');
   if (empty($products_per_column)) {
     $products_per_column = 3;
   }
@@ -60,7 +60,7 @@ function _ecwid_shopping_cart_products_per_column_in_grid() {
 }
 
 function _ecwid_shopping_cart_products_per_row_in_grid() {
-  $products_per_row = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_products_per_row_in_grid');
+  $products_per_row = config_get('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_products_per_row_in_grid');
   if (empty($products_per_row)) {
     $products_per_row = 3;
   }
@@ -596,7 +596,7 @@ function ecwid_shopping_cart_appearance_page_validate($form, &$form_state)
 
 function ecwid_shopping_cart_appearance_page_submit($form, &$form_state) {
   foreach ($form_state['values'] as $name => $value) {
-    config_set('"ecwid_shopping_cart.settings', $name, $value);
+    config_set('ecwid_shopping_cart.settings', $name, $value);
   }
 }
 

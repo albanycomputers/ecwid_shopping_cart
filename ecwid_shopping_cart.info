@@ -3,4 +3,5 @@ description = "Ecwid is a powerful and easy-to-use shopping cart solution that s
 backdrop = 1.x
 type = module
 package = "E-Commerce"
-config = admin/settings/ecwid_shopping_cart
+configure = admin/settings/ecwid_shopping_cart
+version = 1.2.10

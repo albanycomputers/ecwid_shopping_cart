@@ -1,4 +1,15 @@
 <?php
+
+/**
+ * Implements hook_config_info().
+ */
+function ecwid_shopping_cart_config_info(){
+  $prefixes['ecwid_shopping_cart.ecwid_shopping_cart.settings'] = array(
+    'label' => t('First set of settings'),
+    'group' => t('Configuration'),
+  );
+}
+
 // $Id: ecwid_shopping_cart.module,v 1.5 2010/04/21 16:24:33 ecwid Exp $
 require_once 'lib/ecwid_product_api.php';
 require_once 'lib/ecwid_catalog.php';

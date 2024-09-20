@@ -6,7 +6,7 @@ require_once 'lib/ecwid_platform.php';
 require_once 'lib/ecwid_misc.php';
 
 function _ecwid_shopping_cart_get_storeid() {
-  $store_id = variable_get("ecwid_shopping_cart_storeid", 1003);
+  $store_id = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_storeid');
   if (empty($store_id)) {
     $store_id = '1003';
   }
@@ -17,7 +17,7 @@ function _ecwid_shopping_cart_get_storeid() {
 }
 
 function _ecwid_shopping_cart_show_seo_catalog() {
-  $show_seo_catalog = variable_get("ecwid_shopping_cart_show_seo_catalog", FALSE);
+  $show_seo_catalog = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_show_seo_catalog');
 
   if (empty($show_seo_catalog)) {
     $show_seo_catalog = FALSE;
@@ -27,7 +27,7 @@ function _ecwid_shopping_cart_show_seo_catalog() {
 }
 
 function _ecwid_shopping_cart_categories_per_row() {
-  $categories_per_row = variable_get("ecwid_shopping_cart_categories_per_row", 3);
+  $categories_per_row = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_categories_per_row');
   if (empty($categories_per_row)) {
     $categories_per_row = 3;
   }
@@ -38,7 +38,7 @@ function _ecwid_shopping_cart_categories_per_row() {
 }
 
 function _ecwid_shopping_cart_products_per_column_in_grid() {
-  $products_per_column = variable_get("ecwid_shopping_cart_products_per_column_in_grid", 3);
+  $products_per_column = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_products_per_column_in_grid');
   if (empty($products_per_column)) {
     $products_per_column = 3;
   }
@@ -49,7 +49,7 @@ function _ecwid_shopping_cart_products_per_column_in_grid() {
 }
 
 function _ecwid_shopping_cart_products_per_row_in_grid() {
-  $products_per_row = variable_get("ecwid_shopping_cart_products_per_row_in_grid", 3);
+  $products_per_row = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_products_per_row_in_grid');
   if (empty($products_per_row)) {
     $products_per_row = 3;
   }
@@ -60,7 +60,7 @@ function _ecwid_shopping_cart_products_per_row_in_grid() {
 }
 
 function _ecwid_shopping_cart_products_per_page_in_list() {
-  $products_in_list = variable_get("ecwid_shopping_cart_products_per_page_in_list", 10);
+  $products_in_list = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_products_per_page_in_list');
   if (empty($products_in_list)) {
     $products_in_list = 10;
   }
@@ -71,7 +71,7 @@ function _ecwid_shopping_cart_products_per_page_in_list() {
 }
 
 function _ecwid_shopping_cart_products_per_page_in_table() {
-  $products_in_table = variable_get("ecwid_shopping_cart_products_per_page_in_table", 20);
+  $products_in_table = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_products_per_page_in_table');
   if (empty($products_in_table)) {
     $products_in_table = 20;
   }
@@ -82,7 +82,7 @@ function _ecwid_shopping_cart_products_per_page_in_table() {
 }
 
 function _ecwid_shopping_cart_view_mode_on_product() {
-  $product_view_mode = variable_get("ecwid_shopping_cart_view_mode_on_product", 'grid');
+  $product_view_mode = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_view_mode_on_product');
   if (empty($product_view_mode)) {
     $product_view_mode = 'grid';
   }
@@ -90,7 +90,7 @@ function _ecwid_shopping_cart_view_mode_on_product() {
 }
 
 function _ecwid_shopping_cart_view_mode_on_search() {
-  $search_view_mode = variable_get("ecwid_shopping_cart_view_mode_on_search", 'list');
+  $search_view_mode = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_view_mode_on_search');
   if (empty($search_view_mode)) {
     $search_view_mode = 'list';
   }
@@ -98,7 +98,7 @@ function _ecwid_shopping_cart_view_mode_on_search() {
 }
 
 function _ecwid_shopping_cart_secure_page() {
-  $is_secure = variable_get("ecwid_shopping_cart_secure_page", FALSE);
+  $is_secure = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_secure_page');
   if (empty($is_secure)) {
     $is_secure = FALSE;
   }
@@ -106,17 +106,17 @@ function _ecwid_shopping_cart_secure_page() {
 }
 
 function _ecwid_shopping_cart_mobile_link() {
-  $mobile_link = variable_get("ecwid_shopping_cart_mobile_link", '');
+  $mobile_link = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_mobile_link');
 
   if (empty($mobile_link)) {
-    $mobile_link = "http://app.ecwid.com/jsp/" . _ecwid_shopping_cart_get_storeid() . "/catalog";
+    $mobile_link = "https://app.ecwid.com/jsp/" . _ecwid_shopping_cart_get_storeid() . "/catalog";
   }
 
   return $mobile_link;
 }
 
 function _ecwid_shopping_cart_default_category_id() {
-  $category_id = variable_get("ecwid_shopping_cart_default_category_id", '');
+  $category_id = config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_default_category_id');
   if (empty($category_id)) {
     $category_id = 0;
   }
@@ -130,13 +130,13 @@ function _ecwid_shopping_cart_get_register_link()
 {
     global $user;
 
-    $url = 'https://my.ecwid.com/cp/?source=drupal7%s#register';
+    $url = 'https://my.ecwid.com/cp/?source=backdropcms%s#register';
 
     $user_string = '';
     if ($user) {
         $user_string = '&' . http_build_query(array(
             'nickname' => $user->name,
-            'email' => $user->mail            
+            'email' => $user->mail
         ));
     }
 
@@ -187,7 +187,7 @@ function ecwid_shopping_cart_block_configure($delta = '')
     $form['ecwid_minicart_layout'] = array(
       '#type'  => 'select',
       '#title' => t('Minicart layout'),
-      '#default_value' => variable_get('ecwid_shopping_cart_minicart_layout', 'MiniAttachToProductBrowser'),
+      '#default_value' => config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_minicart_layout'),
       '#options' => array(
         ''                           => t('Fixed'),
         'floating'                   => t('Floating'),
@@ -203,7 +203,7 @@ function ecwid_shopping_cart_block_configure($delta = '')
 function ecwid_shopping_cart_block_save($delta = '', $edit = array())
 {
   if ($delta == 'ecwid_minicart') {
-    variable_set('ecwid_shopping_cart_minicart_layout', $edit['ecwid_minicart_layout']);
+    config_set('ecwid_shopping_cart.settings','ecwid_shopping_cart_minicart_layout', $edit['ecwid_minicart_layout']);
   }
 }
 
@@ -219,7 +219,7 @@ function ecwid_shopping_cart_block_view($delta) {
       $block['subject'] = t('');
       $ecwid_block_widget = '<div id="ecwid_shopping_cart_module_minicart">'
         . '<script type="text/javascript"> xMinicart("style=",'
-        . '"layout=' . variable_get('ecwid_shopping_cart_minicart_layout', 'MiniAttachToProductBrowser') . '"'
+        . '"layout=' . config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_minicart_layout') . '"'
         . ');</script></div>';
       break;
     case 'ecwid_vcategories':
@@ -234,7 +234,7 @@ function ecwid_shopping_cart_block_view($delta) {
       $block['subject'] = t('');
       $ecwid_block_widget = <<<HTML
 <div id="horizontal-menu"></div>
-<script src="https://djqizrxa6f10j.cloudfront.net/horizontal-category-widget/v1/horizontal-widget.js"></script> 
+<script src="https://djqizrxa6f10j.cloudfront.net/horizontal-category-widget/v1/horizontal-widget.js"></script>
 HTML;
       break;
   }
@@ -243,7 +243,7 @@ HTML;
 <!-- Ecwid Shopping Cart module v2.02 -->
             $ecwid_pb_url
 <div>
-<script data-cfasync="false" type="text/javascript" src="https://app.ecwid.com/script.js?$store_id&data_platform=drupal7"></script>
+<script data-cfasync="false" type="text/javascript" src="https://app.ecwid.com/script.js?$store_id&data_platform=backdropcms"></script>
             $ecwid_block_widget
 </div>
 <!-- END Ecwid Shopping Cart module v2.02 -->
@@ -268,9 +268,9 @@ function ecwid_shopping_cart_admin() {
   $form['ecwid_shopping_cart_storeid'] = array(
           '#type' => 'textfield',
           '#title' => t('Store ID'),
-          '#default_value' => variable_get('ecwid_shopping_cart_storeid', ''),
+          '#default_value' => config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_storeid'),
           '#size' => 10,
-          '#description' => t('Your Store ID. The demo products will be shown if this field is empty. <br /><a href="http://kb.ecwid.com/Instruction-on-how-to-get-your-free-Store-ID-%28for-modules%29" target="_blank">How to get your <strong>free</strong> Store ID</a>.'),
+          '#description' => t('Your Store ID. The demo products will be shown if this field is empty. <br /><a href="https://kb.ecwid.com/Instruction-on-how-to-get-your-free-Store-ID-%28for-modules%29" target="_blank">How to get your <strong>free</strong> Store ID</a>.'),
           '#required' => FALSE,
   );
 
@@ -284,11 +284,11 @@ function ecwid_shopping_cart_admin() {
   }
   else {
     if ($is_api_enabled) {
-      $description = "<a href=\"http://kb.ecwid.com/Inline-SEO-Catalog\" target=\"_blank\">How Inline Seo Catalog works</a>. This option requires using Ecwid API which is available for the paid accounts only.";
+      $description = "<a href=\"https://kb.ecwid.com/Inline-SEO-Catalog\" target=\"_blank\">How Inline Seo Catalog works</a>. This option requires using Ecwid API which is available for the paid accounts only.";
     }
     elseif (!$is_api_enabled && $show_seo_catalog) {
       $description = '<strong>The "Inline HTML catalog" option requires using Ecwid API which is available for the paid accounts only. Please consider upgrading your account to use it.</strong>';
-      variable_set('ecwid_shopping_cart_show_seo_catalog', '');
+      config_set('ecwid_shopping_cart.settings','ecwid_shopping_cart_show_seo_catalog', '');
     }
     else {
       $description = 'The "Inline HTML catalog" option requires using Ecwid API which is available for the paid accounts only. Please consider upgrading your account to use it.';
@@ -297,7 +297,7 @@ function ecwid_shopping_cart_admin() {
   $form['ecwid_shopping_cart_show_seo_catalog'] = array(
           '#type' => 'checkbox',
           '#title' => t('Enable the inline plain-HTML catalog(better SEO)'),
-          '#default_value' => variable_get('ecwid_shopping_cart_show_seo_catalog', ''),
+          '#default_value' => config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_show_seo_catalog'),
           '#size' => 10,
           '#description' => t($description),
           '#required' => FALSE,
@@ -307,7 +307,7 @@ function ecwid_shopping_cart_admin() {
   $form['ecwid_shopping_cart_categories_per_row'] = array(
           '#type' => 'textfield',
           '#title' => t('Categories per row'),
-          '#default_value' => variable_get('ecwid_shopping_cart_categories_per_row', 3),
+          '#default_value' => config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_categories_per_row'),
           '#size' => 10,
           '#description' => t(''),
           '#required' => FALSE,
@@ -317,7 +317,7 @@ function ecwid_shopping_cart_admin() {
   $form['ecwid_shopping_cart_products_per_column_in_grid'] = array(
           '#type' => 'textfield',
           '#title' => t('Products per column in grid mode'),
-          '#default_value' => variable_get('ecwid_shopping_cart_products_per_column_in_grid', 3),
+          '#default_value' => config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_products_per_column_in_grid'),
           '#size' => 10,
           '#description' => t(''),
           '#required' => FALSE,
@@ -327,7 +327,7 @@ function ecwid_shopping_cart_admin() {
   $form['ecwid_shopping_cart_products_per_row_in_grid'] = array(
           '#type' => 'textfield',
           '#title' => t('Products per row in grid mode'),
-          '#default_value' => variable_get('ecwid_shopping_cart_products_per_row_in_grid', 3),
+          '#default_value' => config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_products_per_row_in_grid'),
           '#size' => 10,
           '#description' => t(''),
           '#required' => FALSE,
@@ -337,7 +337,7 @@ function ecwid_shopping_cart_admin() {
   $form['ecwid_shopping_cart_products_per_page_in_list'] = array(
           '#type' => 'textfield',
           '#title' => t('Products per page in list mode'),
-          '#default_value' => variable_get('ecwid_shopping_cart_products_per_page_in_list', 10),
+          '#default_value' => config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_products_per_page_in_list'),
           '#size' => 10,
           '#description' => t(''),
           '#required' => FALSE,
@@ -347,7 +347,7 @@ function ecwid_shopping_cart_admin() {
   $form['ecwid_shopping_cart_products_per_page_in_table'] = array(
           '#type' => 'textfield',
           '#title' => t('Products per page in table mode'),
-          '#default_value' => variable_get('ecwid_shopping_cart_products_per_page_in_table', 20),
+          '#default_value' => config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_products_per_page_in_table'),
           '#size' => 10,
           '#description' => t(''),
           '#required' => FALSE,
@@ -357,7 +357,7 @@ function ecwid_shopping_cart_admin() {
   $form['ecwid_shopping_cart_view_mode_on_product'] = array(
           '#type' => 'select',
           '#title' => t('Default view mode on product pages'),
-          '#default_value' => variable_get('ecwid_shopping_cart_view_mode_on_product', "Grid mode"),
+          '#default_value' => config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_view_mode_on_product'),
           '#options' => array("grid" => "Grid mode", "list" => "List mode", "table" => "Table mode"),
           '#size' => 1,
           '#description' => t(''),
@@ -368,7 +368,7 @@ function ecwid_shopping_cart_admin() {
   $form['ecwid_shopping_cart_view_mode_on_search'] = array(
           '#type' => 'select',
           '#title' => t('Default view mode on search results'),
-          '#default_value' => variable_get('ecwid_shopping_cart_view_mode_on_search', "List mode"),
+          '#default_value' => config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_view_mode_on_search'),
           '#options' => array("grid" => "Grid mode", "list" => "List mode", "table" => "Table mode"),
           '#size' => 1,
           '#description' => t(''),
@@ -379,9 +379,9 @@ function ecwid_shopping_cart_admin() {
   $form['ecwid_shopping_cart_secure_page'] = array(
           '#type' => 'checkbox',
           '#title' => t('Enable this option, if you use Ecwid on a secure HTTPS page '),
-          '#default_value' => variable_get('ecwid_shopping_cart_secure_page', FALSE),
+          '#default_value' => config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_secure_page'),
           '#size' => 10,
-          '#description' => t('<a href="http://kb.ecwid.com/SSL-HTTPS">Information about Ecwid and SSL/HTTPS</a>'),
+          '#description' => t('<a href="https://kb.ecwid.com/SSL-HTTPS">Information about Ecwid and SSL/HTTPS</a>'),
           '#required' => FALSE,
   );
 
@@ -389,9 +389,9 @@ function ecwid_shopping_cart_admin() {
   $form['ecwid_shopping_cart_mobile_link'] = array(
           '#type' => 'textfield',
           '#title' => t('Full link to your mobile catalog'),
-          '#default_value' => variable_get('ecwid_shopping_cart_mobile_link', ''),
+          '#default_value' => config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_mobile_link'),
           '#size' => 10,
-          '#description' => t('For example http://mdemo.ecwid.com. <br /><a href="http://kb.ecwid.com/Mobile-Catalog">Information about Ecwid and mobile catalogs.</a>'),
+          '#description' => t('For example https://mdemo.ecwid.com. <br /><a href="https://kb.ecwid.com/Mobile-Catalog">Information about Ecwid and mobile catalogs.</a>'),
           '#required' => FALSE,
   );
 
@@ -399,9 +399,9 @@ function ecwid_shopping_cart_admin() {
   $form['ecwid_shopping_cart_default_category_id'] = array(
           '#type' => 'textfield',
           '#title' => t('Default category ID'),
-          '#default_value' => variable_get('ecwid_shopping_cart_default_category_id', ''),
+          '#default_value' => config_get('ecwid_shopping_cart.settings','ecwid_shopping_cart_default_category_id'),
           '#size' => 10,
-          '#description' => t('<a href="http://kb.ecwid.com/Default-category-for-product-browser">What is it?</a>'),
+          '#description' => t('<a href="https://kb.ecwid.com/Default-category-for-product-browser">What is it?</a>'),
           '#required' => FALSE,
   );
 
@@ -413,7 +413,7 @@ function ecwid_shopping_cart_menu() {
   $items['admin/settings/ecwid_shopping_cart'] = array(
     'title' => 'Ecwid Store',
     'description' => 'You can setup your store settings here.',
-    'page callback' => 'drupal_get_form',
+    'page callback' => 'backdrop_get_form',
     'page arguments' => array('ecwid_shopping_cart_general_page'),
     'access arguments' => array('access administration pages'),
     'type' => MENU_NORMAL_ITEM,
@@ -422,7 +422,7 @@ function ecwid_shopping_cart_menu() {
   $items['admin/settings/ecwid_shopping_cart/general'] = array(
     'title' => 'General',
     'type' => MENU_DEFAULT_LOCAL_TASK,
-    'page callback' => 'drupal_get_form',
+    'page callback' => 'backdrop_get_form',
     'page arguments' => array('ecwid_shopping_cart_general_page'),
     'access arguments' => array('access administration pages')
   );
@@ -432,7 +432,7 @@ function ecwid_shopping_cart_menu() {
     'title' => 'Appearance',
     'type' => MENU_LOCAL_TASK,
     'weight' => 10,
-    'page callback' => 'drupal_get_form',
+    'page callback' => 'backdrop_get_form',
     'page arguments' => array('ecwid_shopping_cart_appearance_page'),
     'access arguments' => array('access administration pages')
   );
@@ -585,7 +585,7 @@ function ecwid_shopping_cart_appearance_page_validate($form, &$form_state)
 
 function ecwid_shopping_cart_appearance_page_submit($form, &$form_state) {
   foreach ($form_state['values'] as $name => $value) {
-    variable_set($name, $value);
+    config_set('"ecwid_shopping_cart.settings', $name, $value);
   }
 }
 
@@ -626,9 +626,9 @@ function ecwid_shopping_cart_general_page()
 
   ob_end_clean();
 
-  $messages = drupal_get_messages('status');
+  $messages = backdrop_get_messages('status');
   if (!empty($messages) && _ecwid_shopping_cart_get_storeid() != 1003) {
-    drupal_set_message(sprintf(t('Your Ecwid store is connected. <a target="_blank" href="%s">Click here</a> to see the store page on your site.'), url('store')), 'status');
+    backdrop_set_message(sprintf(t('Your Ecwid store is connected. <a target="_blank" href="%s">Click here</a> to see the store page on your site.'), url('store')), 'status');
   }
 
   return system_settings_form(
@@ -645,15 +645,15 @@ function ecwid_shopping_cart_general_page()
 function ecwid_shopping_cart_general_page_submit($form, &$form_state)
 {
   cache_set('last_ecwid_api_check', 0);
-  variable_set('ecwid_shopping_cart_storeid', @$form_state['input']['ecwid_store_id']);
+  config_set('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_storeid', @$form_state['input']['ecwid_store_id']);
 }
 
 function ecwid_shopping_cart_preprocess_html(&$variables) {
 
   if (arg(0) == "admin" || in_array('administrator', $GLOBALS['user']->roles)) {
     // reference your own stylesheet
-    drupal_add_css(drupal_get_path('module', 'ecwid_shopping_cart') . '/css/pure-min.css', array('weight' => CSS_THEME));
-    drupal_add_css(drupal_get_path('module', 'ecwid_shopping_cart') . '/css/settings.css', array('weight' => CSS_THEME));
+    backdrop_add_css(backdrop_get_path('module', 'ecwid_shopping_cart') . '/css/pure-min.css', array('weight' => CSS_THEME));
+    backdrop_add_css(backdrop_get_path('module', 'ecwid_shopping_cart') . '/css/settings.css', array('weight' => CSS_THEME));
   }
 
   if (!isset($_GET['_escaped_fragment_'])) return;
@@ -909,8 +909,8 @@ function ecwid_shopping_cart_showstore() {
       }
 
       if (!$found) {
-        drupal_not_found();
-        drupal_exit();
+        backdrop_not_found();
+        backdrop_exit();
       }
     }
   }
@@ -936,7 +936,7 @@ function ecwid_shopping_cart_showstore() {
   }
 
 
-  $additional_widgets = '<script data-cfasync="false" type="text/javascript" src="https://app.ecwid.com/script.js?' . $store_id . '&data_platform=drupal7"></script>';
+  $additional_widgets = '<script data-cfasync="false" type="text/javascript" src="https://app.ecwid.com/script.js?' . $store_id . '&data_platform=backdropcms"></script>';
 
   $integration_code .= <<<EOT
 <!-- Ecwid Shopping Cart module v2.02 -->

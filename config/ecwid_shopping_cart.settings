@@ -1,0 +1,16 @@
+{
+  "_config_name": "ecwid_shopping_cart.settings",
+  "ecwid_shopping_cart_minicart_layout": "MiniAttachToProductBrowser",
+  "ecwid_shopping_cart_storeid": 1003,
+  "ecwid_shopping_cart_categories_per_row": 3,
+  "ecwid_shopping_cart_products_per_column_in_grid": 3,
+  "ecwid_shopping_cart_products_per_row_in_grid": 3,
+  "ecwid_shopping_cart_products_per_page_in_list": 10,
+  "ecwid_shopping_cart_products_per_page_in_table": 20,
+  "ecwid_shopping_cart_view_mode_on_product": "grid",
+  "ecwid_shopping_cart_view_mode_on_search": "list",
+  "ecwid_shopping_cart_default_category_id": 0,
+  "ecwid_shopping_cart_show_seo_catalog": FALSE,
+  "ecwid_shopping_cart_secure_page": FALSE,
+  "ecwid_shopping_cart_mobile_link": ""
+}

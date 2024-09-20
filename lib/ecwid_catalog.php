@@ -9,13 +9,13 @@ class EcwidCatalog
 	public function __construct($store_id, $store_base_url)
 	{
 		$this->store_id = intval($store_id);
-		$this->store_base_url = $store_base_url;	
+		$this->store_base_url = $store_base_url;
 		$this->ecwid_api = new EcwidProductApi($this->store_id);
 	}
 
 	public function get_product($id)
 	{
-		$params = array 
+		$params = array
 		(
 			array("alias" => "p", "action" => "product", "params" => array("id" => $id)),
 			array("alias" => "pf", "action" => "profile")
@@ -26,15 +26,15 @@ class EcwidCatalog
 		$profile = $batch_result["pf"];
 
 		$return = $this->_l('');
-		
-		if (is_array($product)) 
+
+		if (is_array($product))
 		{
-		
-			$return .= $this->_l('<div itemscope itemtype="http://schema.org/Product">', 1);
+
+			$return .= $this->_l('<div itemscope itemtype="https://schema.org/Product">', 1);
 			$return .= $this->_l('<h2 class="ecwid_catalog_product_name" itemprop="name">' . EcwidPlatform::esc_html($product["name"]) . '</h2>');
 			$return .= $this->_l('<p class="ecwid_catalog_product_sku" itemprop="sku">' . EcwidPlatform::esc_html($product["sku"]) . '</p>');
-			
-			if (!empty($product["thumbnailUrl"])) 
+
+			if (!empty($product["thumbnailUrl"]))
 			{
 				$return .= $this->_l('<div class="ecwid_catalog_product_image">', 1);
 				$return .= $this->_l(
@@ -46,7 +46,7 @@ class EcwidCatalog
 				);
 				$return .= $this->_l('</div>', -1);
 			}
-			
+
 			if(isset($product['categories']) && is_array($product['categories']))
 			{
 				foreach ($product['categories'] as $ecwid_category)
@@ -57,13 +57,13 @@ class EcwidCatalog
 					}
 				}
 			}
-			
-			$return .= $this->_l('<div class="ecwid_catalog_product_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">', 1);
+
+			$return .= $this->_l('<div class="ecwid_catalog_product_price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">', 1);
 			$return .=  $this->_l(EcwidPlatform::get_price_label() . ': <span itemprop="price">' . EcwidPlatform::esc_html($product["price"]) . '</span>');
 
 			$return .= $this->_l('<span itemprop="priceCurrency">' . EcwidPlatform::esc_html($profile['currency']) . '</span>');
 			if (!isset($product['quantity']) || (isset($product['quantity']) && $product['quantity'] > 0)) {
-				$return .= $this->_l('<link itemprop="availability" href="http://schema.org/InStock" />In stock');
+				$return .= $this->_l('<link itemprop="availability" href="https://schema.org/InStock" />In stock');
 			}
 			$return .= $this->_l('</div>', -1);
 
@@ -112,8 +112,8 @@ class EcwidCatalog
 					if ($product_options["type"] == "SELECT")
 					{
 						$return .= $this->_l('<select name='. $product_options["name"].'>', 1);
-						foreach ($product_options["choices"] as $options_param) 
-						{ 
+						foreach ($product_options["choices"] as $options_param)
+						{
 							$return .= $this->_l(
 								sprintf(
 									'<option value="%s">%s (%s)</option>',
@@ -127,7 +127,7 @@ class EcwidCatalog
 					}
 					if($product_options["type"] == "RADIO")
 					{
-						foreach ($product_options["choices"] as $options_param) 
+						foreach ($product_options["choices"] as $options_param)
 						{
 							$return .= $this->_l(
 								sprintf(
@@ -158,11 +158,11 @@ class EcwidCatalog
 
 					$return .= $this->_l('</div>', -1);
 				}
-			}				
-						
-			if (is_array($product["galleryImages"])) 
+			}
+
+			if (is_array($product["galleryImages"]))
 			{
-				foreach ($product["galleryImages"] as $galleryimage) 
+				foreach ($product["galleryImages"] as $galleryimage)
 				{
 					if (empty($galleryimage["alt"]))  $galleryimage["alt"] = htmlspecialchars($product["name"]);
 					$return .= $this->_l(
@@ -208,9 +208,9 @@ class EcwidCatalog
 			$return .= $this->_l('<div>' . $category['description'] . '</div>');
 		}
 
-		if (is_array($categories)) 
+		if (is_array($categories))
 		{
-			foreach ($categories as $category) 
+			foreach ($categories as $category)
 			{
 				$category_url = $this->get_category_url($category);
 
@@ -221,9 +221,9 @@ class EcwidCatalog
 			}
 		}
 
-		if (is_array($products)) 
+		if (is_array($products))
 		{
-			foreach ($products as $product) 
+			foreach ($products as $product)
 			{
 
 				$product_url = $this->get_product_url($product);
@@ -267,7 +267,7 @@ class EcwidCatalog
 		$category = $this->ecwid_api->get_category($id);
 
 		$result = '';
-		if (is_array($category) && isset($category['name'])) { 
+		if (is_array($category) && isset($category['name'])) {
 			$result = $category['name'];
 		}
 
@@ -277,7 +277,7 @@ class EcwidCatalog
 	public function get_product_name($id)
 	{
 		$product = $this->ecwid_api->get_product($id);
-				
+
 		$result = '';
 		if (is_array($product) && isset($product['name'])) {
 			$result = $product['name'];
@@ -344,14 +344,14 @@ class EcwidCatalog
 	}
 
 	/*
-	 * A helper function to produce indented html output. 
-	 * Indent change need to be 1 for opening tag lines and -1 for closing tag lines. 
+	 * A helper function to produce indented html output.
+	 * Indent change need to be 1 for opening tag lines and -1 for closing tag lines.
 	 * Regular lines should omit the second parameter.
 	 * Example:
 	 * _l('<parent-tag>', 1);
 	 * _l('<content-tag>content</content-tag>');
 	 * _l('</parent-tag>', -1)
-	 * 
+	 *
 	 */
 	protected function _l($code, $indent_change = 0)
 	{

@@ -7,19 +7,19 @@
 
     <div class="greeting-box complete">
       <div class="image-container">
-        <img class="greeting-image" src="<?php echo file_create_url(drupal_get_path('module', 'ecwid_shopping_cart'), array('absolute' => true)); ?>/images/store_ready.png" width="142" />
+        <img class="greeting-image" src="<?php echo file_create_url(backdrop_get_path('module', 'ecwid_shopping_cart'), array('absolute' => true)); ?>/images/store_ready.png" width="142" />
       </div>
 
       <div class="messages-container">
         <?php if (array_key_exists('settings-updated', $_GET)): ?>
 
         <div class="main-message"><?php echo t('Congratulations!'); ?></div>
-        <div class="secondary-message"?><?php echo t('Your Ecwid store is now connected to your Drupal website'); ?></div>
+        <div class="secondary-message"?><?php echo t('Your Ecwid store is now connected to your Backdrop CMS website'); ?></div>
 
         <?php else: ?>
 
         <div class="main-message"><?php echo t('Greetings!'); ?></div>
-        <div class="secondary-message"?><?php echo t('Your Ecwid store is connected to your Drupal website'); ?></div>
+        <div class="secondary-message"?><?php echo t('Your Ecwid store is connected to your Backdrop CMS website'); ?></div>
         <?php endif; ?>
       </div>
     </div>
@@ -31,7 +31,7 @@
         </span>
       </div>
       <div class="right two-buttons">
-        <a class="pure-button" target="_blank" href="https://my.ecwid.com/cp/?source=drupal7#t1=&t2=Dashboard">
+        <a class="pure-button" target="_blank" href="https://my.ecwid.com/cp/?source=backdropcms#t1=&t2=Dashboard">
           <?php echo t('Control panel'); ?>
         </a>
         <a class="pure-button" target="_blank" href="<?php echo check_plain(url('store')); ?>">
@@ -49,7 +49,7 @@
       </div>
 
       <div class="right">
-        <a target="_blank" class="pure-button pure-button-primary" href="http://www.ecwid.com/plans-and-pricing.html?source=drupal7">
+        <a target="_blank" class="pure-button pure-button-primary" href="https://www.ecwid.com/plans-and-pricing.html?source=backdropcms">
           <?php echo t('Upgrade'); ?>
         </a>
       </div>
@@ -67,6 +67,6 @@
     </div>
 
     <hr />
-    <p><?php echo t('Questions? Visit <a href="http://help.ecwid.com/?source=drupal7">Ecwid support center</a>'); ?></p>
+    <p><?php echo t('Questions? Visit <a href="https://help.ecwid.com/?source=backdropcms">Ecwid support center</a>'); ?></p>
   </fieldset>
 </div>

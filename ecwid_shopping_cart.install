@@ -1,7 +1,4 @@
 <?php
-// $Id: ecwid_shopping_cart.install,v 1.3 2010/04/21 16:04:12 ecwid Exp $
-
-
 /**
  * @file
  * Install, update and uninstall functions for the ecwid_shopping_cart module.
@@ -9,8 +6,8 @@
  */
 
 /**
- * @todo Please document this function.
- * @see http://drupal.org/node/1354
+ * When uninstalling, the settings will be removed.
+ *
  */
 function ecwid_shopping_cart_uninstall() {
   config_clear('ecwid_shopping_cart.settings', 'ecwid_shopping_cart_minicart_layout');

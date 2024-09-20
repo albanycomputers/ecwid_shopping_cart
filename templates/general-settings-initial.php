@@ -8,7 +8,7 @@
 			<div class="greeting-box">
 
 				<div class="image-container">
-					<img class="greeting-image" src="<?php echo file_create_url(drupal_get_path('module', 'ecwid_shopping_cart'), array('absolute' => true)); ?>/images/store_inprogress.png" width="142" />
+					<img class="greeting-image" src="<?php echo file_create_url(backdrop_get_path('module', 'ecwid_shopping_cart'), array('absolute' => true)); ?>/images/store_inprogress.png" width="142" />
 				</div>
 
 				<div class="messages-container">
@@ -17,7 +17,7 @@
 						<?php echo t('Thank you for choosing Ecwid to build your online store'); ?>
 					</div>
 					<div class="secondary-message">
-						<?php echo t('The first step towards opening your online business: <br />Let’s get started and add a store to your Drupal website in <strong>3</strong> simple steps.'); ?>
+						<?php echo t('The first step towards opening your online business: <br />Let’s get started and add a store to your Backdrop CMS website in <strong>3</strong> simple steps.'); ?>
 					</div>
 				</div>
 
@@ -34,7 +34,7 @@
 						<a class="pure-button pure-button-secondary" target="_blank" href="<?php echo _ecwid_shopping_cart_get_register_link(); ?>">
 							<?php echo t('Create new Ecwid account'); ?>
 						</a>
-						<a class="pure-button pure-button-secondary" target="_blank" href="https://my.ecwid.com/cp/?source=drupal7#t1=&t2=Dashboard">
+						<a class="pure-button pure-button-secondary" target="_blank" href="https://my.ecwid.com/cp/?source=backdropcms#t1=&t2=Dashboard">
 							<?php echo t('I already have Ecwid account, sign in'); ?>
 						</a>
 					</div>
@@ -67,6 +67,6 @@
 				</li>
 			</ol>
 			<hr />
-			<p><?php echo t('Questions? Visit <a href="http://help.ecwid.com/?source=drupal7">Ecwid support center</a>'); ?></p>
+			<p><?php echo t('Questions? Visit <a href="https://help.ecwid.com/?source=backdropcms">Ecwid support center</a>'); ?></p>
 		</fieldset>
 </div>

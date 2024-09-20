@@ -12,7 +12,7 @@ class EcwidProductApi {
 
     function __construct($store_id) {
 
-        $this->ECWID_PRODUCT_API_ENDPOINT = 'http://app.ecwid.com/api/v1';
+        $this->ECWID_PRODUCT_API_ENDPOINT = 'https://app.ecwid.com/api/v1';
         $this->store_id = intval($store_id);
     }
 
@@ -20,7 +20,7 @@ class EcwidProductApi {
 
         $result = false;
         $fetch_result = EcwidPlatform::fetch_url($url);
-     
+
         if ($fetch_result['code'] == 200) {
             $this->error = '';
             $this->error_code = '';
@@ -30,12 +30,12 @@ class EcwidProductApi {
             $this->error = $fetch_result['data'];
             $this->error_code = $fetch_result['code'];
         }
-        
+
         return $result;
     }
 
     function get_all_categories() {
-        
+
         $api_url = $this->ECWID_PRODUCT_API_ENDPOINT . '/' . $this->store_id . '/categories';
         $categories = $this->process_request($api_url);
 
@@ -43,7 +43,7 @@ class EcwidProductApi {
     }
 
     function get_subcategories_by_id($parent_category_id = 0) {
-        
+
         $parent_category_id = intval($parent_category_id);
         $api_url = $this->ECWID_PRODUCT_API_ENDPOINT . '/' . $this->store_id . '/categories?parent=' . $parent_category_id;
         $categories = $this->process_request($api_url);
@@ -99,12 +99,12 @@ class EcwidProductApi {
 
         return $cached[$category_id];
     }
-        
+
     function get_batch_request($params) {
 
         if (!is_array($params)) {
             return false;
-        } 
+        }
 
         $api_url = '';
         foreach ($params as $param) {
@@ -139,7 +139,7 @@ class EcwidProductApi {
             }
 
         }
-        
+
         $api_url =  $this->ECWID_PRODUCT_API_ENDPOINT . "/" . $this->store_id . "/batch?". $api_url;
         $data = $this->process_request($api_url);
 
@@ -154,7 +154,7 @@ class EcwidProductApi {
 
         return $random_products;
     }
-    
+
     function get_profile() {
 
         $api_url = $this->ECWID_PRODUCT_API_ENDPOINT . "/" . $this->store_id . "/profile";
@@ -175,7 +175,7 @@ class EcwidProductApi {
 
     function get_method_response_stream($method)
     {
-    
+
         $request_url = '';
         switch($method) {
 
